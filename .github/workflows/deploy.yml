@@ -1,0 +1,40 @@
+name: Techiegram CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: 'npm'
+        cache-dependency-path: './backend/package-lock.json'
+
+    - name: Install Express Server Dependencies
+      run: |
+        cd backend
+        npm ci
+
+    - name: Run Gateway Server Unit Checks
+      run: |
+        cd backend
+        # Run node syntax verification check
+        node -c server.js
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Build Gateway Docker Image
+      run: |
+        docker build -t techiegram-backend:latest ./backend

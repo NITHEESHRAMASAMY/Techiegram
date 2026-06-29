@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-cyber-bg text-gray-100 font-sans antialiased overflow-x-hidden;
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(0, 242, 254, 0.03) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(160, 32, 240, 0.03) 0%, transparent 40%);
+  }
+
+  /* Custom styling for inputs */
+  input, textarea, select {
+    @apply bg-cyber-bg border border-cyber-border rounded-xl px-4 py-3 text-white placeholder-cyber-gray focus:outline-none focus:border-cyber-accent focus:ring-1 focus:ring-cyber-accent transition-all duration-300;
+  }
+}
+
+@layer components {
+  /* Premium Glassmorphism */
+  .glass-panel {
+    @apply bg-cyber-card bg-opacity-70 backdrop-blur-md border border-cyber-border;
+  }
+
+  .glass-card {
+    @apply bg-cyber-card bg-opacity-40 backdrop-blur-sm border border-cyber-border rounded-2xl hover:border-cyber-accent hover:border-opacity-50 transition-all duration-300;
+  }
+
+  /* Cyber Accented Buttons */
+  .btn-primary {
+    @apply relative overflow-hidden bg-gradient-to-r from-cyber-accent to-cyber-purple text-cyber-bg font-bold px-6 py-3 rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(0,242,254,0.2)] hover:shadow-[0_0_25px_rgba(0,242,254,0.5)] hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply border border-cyber-border hover:bg-cyber-hover hover:border-cyber-accent text-white font-medium px-6 py-3 rounded-xl transition-all duration-300;
+  }
+
+  .btn-danger {
+    @apply bg-red-600 hover:bg-red-700 text-white font-medium px-6 py-3 rounded-xl transition-all duration-300;
+  }
+
+  /* Tech text highlights */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyber-accent via-cyber-purple to-cyber-pink;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0F19;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #243249;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00F2FE;
+}
+
+/* Hide default file upload design */
+.custom-file-upload::-webkit-file-upload-button {
+  visibility: hidden;
+}

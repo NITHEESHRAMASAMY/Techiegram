@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+pydantic
+opencv-python
+transformers
+torch
+openai-whisper
+scikit-learn
+pandas
+numpy
+requests
+soundfile
+librosa
+python-multipart
